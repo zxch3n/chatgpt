@@ -20,7 +20,7 @@ Commit Message。
 ## 安装
 
 ```
-deno install --allow-read --allow-env=HOME --allow-net=api.openai.com ai.ts
+deno install -f --allow-read --allow-env=HOME --allow-net=api.openai.com https://github.com/zxch3n/chatgpt/raw/main/ai.ts
 ```
 
 ## Example
