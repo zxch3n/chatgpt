@@ -20,7 +20,6 @@ if (!KEY) {
 
 const INPUT = "请输入文本:\n";
 
-// deno run --allow-read --allow-net=api.openai.com --allow-run=pbpaste chat.ts
 export async function translateToChinese(s: string) {
   const api = new ChatGPTAPI({
     apiKey: KEY,
@@ -66,12 +65,12 @@ export async function gitDiff() {
   });
   diff = diff.replace(/\s+/g, " ");
   console.log("The diff content length is " + diff.length);
-  if (diff.length > 3000) {
-    console.log("The message is trimmed to 3000 characters");
-    diff = diff.slice(0, 3000);
+  if (diff.length > 9000) {
+    console.log("The message is trimmed to 9000 characters");
+    diff = diff.slice(0, 9000);
   }
 
-  console.log("\n\n");
+  console.log();
   console.log("Generating commit message...");
   const r = await api.sendMessage(
     `Write a commit message for the following diff\n\n\n${diff}`,
@@ -81,7 +80,7 @@ export async function gitDiff() {
     },
   );
 
-  console.log("\n\n");
+  console.log();
   console.log("🤖 ChatGPT:\n");
   console.log(r.text);
   console.log("");
